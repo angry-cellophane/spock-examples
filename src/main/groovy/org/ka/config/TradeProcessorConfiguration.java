@@ -8,15 +8,14 @@ import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
-@Import(DatabaseConfiguration.class)
 public class TradeProcessorConfiguration {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Bean
     public TradeProcessingService tradeProcessingService() {
-        return new ParseAndSaveTradesToDatabase(tradesParser(), tradeDao());
+        return new ParseAndSaveTradesToDatabase(tradesParser(), tradeDao(), tradeProcessingDao());
     }
 
     @Bean
@@ -27,6 +26,11 @@ public class TradeProcessorConfiguration {
     @Bean
     public TradeDao tradeDao() {
         return new TradeDaoImpl(jdbcTemplate);
+    }
+
+    @Bean
+    public TradeProcessingDao tradeProcessingDao() {
+        return new TradeProcessingDaoImpl(jdbcTemplate);
     }
 
 }

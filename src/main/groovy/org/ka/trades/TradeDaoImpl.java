@@ -4,7 +4,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class TradeDaoImpl implements TradeDao {
 
-    private static final String SAVE_TRADE_QUERY = "insert into trades (id, type, legalEntityId) values (?, ?, ?)";
+    private static final String SAVE_TRADE_QUERY = "insert into trades (id, type, legal_entity_id) values (?, ?, ?)";
 
     private final JdbcTemplate jdbcTemplate;
 
