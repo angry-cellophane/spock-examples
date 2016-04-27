@@ -31,4 +31,9 @@ class SpockIntegrationTest extends Specification {
         'id=3|type=Options|legalEntityId=BigBank123|currency' || [ TRADE_INFO: 'id=3|type=Options|legalEntityId=BigBank123|currency', RESULT: 'FAILURE']
     }
 
+    def cleanup() {
+        sql.call('delete from TRADES')
+        sql.call('delete from TRADES_PROCESSING')
+    }
+
 }

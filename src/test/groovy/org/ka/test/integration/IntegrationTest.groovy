@@ -1,5 +1,7 @@
 package org.ka.test.integration
 
+import org.junit.After
+import org.junit.AfterClass
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -48,8 +50,6 @@ class IntegrationTest {
 
     @Test
     void processOneCorrectTradeInfoWithOptionalField() {
-        Assert.assertEquals(0, JdbcTestUtils.countRowsInTable(jdbcTemplate, "trades"));
-
         String tradeInfo = "id=2|type=Converts|legalEntityId=2345|currency=EUR";
         tradeService.process(tradeInfo);
 
@@ -71,8 +71,6 @@ class IntegrationTest {
 
     @Test
     void processInCorrectTradeInfo() {
-        Assert.assertEquals(0, JdbcTestUtils.countRowsInTable(jdbcTemplate, "trades"));
-
         String tradeInfo = "id=3|type=Option|legalEntityId=3456|currency";
         tradeService.process(tradeInfo);
 
@@ -90,5 +88,11 @@ class IntegrationTest {
         Assert.assertEquals(tradeInfo, row['tradeInfo'])
         Assert.assertEquals('FAILURE', row['result'])
         Assert.assertNotNull(row['errorMessage'])
+    }
+
+    @After
+    public void cleanup() {
+        jdbcTemplate.update("delete from TRADES_PROCESSING");
+        jdbcTemplate.update("delete from TRADES");
     }
 }
