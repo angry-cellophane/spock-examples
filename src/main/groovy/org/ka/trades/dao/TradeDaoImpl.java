@@ -1,5 +1,6 @@
-package org.ka.trades;
+package org.ka.trades.dao;
 
+import org.ka.trades.model.Trade;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class TradeDaoImpl implements TradeDao {

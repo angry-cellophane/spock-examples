@@ -1,6 +1,8 @@
-package org.ka.trades;
+package org.ka.trades.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.sql.Timestamp;
 
 public class TradeProcessingDaoImpl implements TradeProcessingDao {
 
@@ -18,11 +20,12 @@ public class TradeProcessingDaoImpl implements TradeProcessingDao {
 
     @Override
     public void success(String tradeInfo) {
-        jdbcTemplate.update(SAVE_RESULT_QUERY, System.currentTimeMillis(), tradeInfo, SUCCESS, null);
+        System.out.println("it works");
+        jdbcTemplate.update(SAVE_RESULT_QUERY, new Timestamp(System.currentTimeMillis()), tradeInfo, SUCCESS, null);
     }
 
     @Override
     public void failure(String tradeInfo, String errorMessage) {
-        jdbcTemplate.update(SAVE_RESULT_QUERY, System.currentTimeMillis(), tradeInfo, FAILURE, errorMessage);
+        jdbcTemplate.update(SAVE_RESULT_QUERY, new Timestamp(System.currentTimeMillis()), tradeInfo, FAILURE, errorMessage);
     }
 }

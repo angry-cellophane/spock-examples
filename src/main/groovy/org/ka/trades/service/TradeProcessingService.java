@@ -1,4 +1,4 @@
-package org.ka.trades;
+package org.ka.trades.service;
 
 public interface TradeProcessingService {
     void process(String tradeInfo);

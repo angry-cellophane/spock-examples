@@ -1,6 +1,9 @@
-package org.ka.trades;
+package org.ka.trades.service;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.ka.trades.dao.TradeDao;
+import org.ka.trades.dao.TradeProcessingDao;
+import org.ka.trades.model.Trade;
+import org.ka.trades.parser.TradesParser;
 
 public class ParseAndSaveTradesToDatabase implements TradeProcessingService {
 

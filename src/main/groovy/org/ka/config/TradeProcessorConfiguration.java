@@ -1,10 +1,16 @@
 package org.ka.config;
 
-import org.ka.trades.*;
+import org.ka.trades.dao.TradeDao;
+import org.ka.trades.dao.TradeDaoImpl;
+import org.ka.trades.dao.TradeProcessingDao;
+import org.ka.trades.dao.TradeProcessingDaoImpl;
+import org.ka.trades.parser.PipeSeparatedValuesParser;
+import org.ka.trades.parser.TradesParser;
+import org.ka.trades.service.ParseAndSaveTradesToDatabase;
+import org.ka.trades.service.TradeProcessingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration

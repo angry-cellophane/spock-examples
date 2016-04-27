@@ -1,4 +1,4 @@
-package org.ka.trades;
+package org.ka.trades.model;
 
 public class Trade {
     private long id;
