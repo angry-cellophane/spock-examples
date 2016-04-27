@@ -24,7 +24,7 @@ public class ParseAndSaveTradesToDatabase implements TradeProcessingService {
             tradeDao.save(trade);
             processingDao.success(tradeInfo);
         } catch (Exception e) {
-            processingDao.failure(tradeInfo, e.getMessage());
+            processingDao.failure(tradeInfo, e.toString());
         }
     }
 }
