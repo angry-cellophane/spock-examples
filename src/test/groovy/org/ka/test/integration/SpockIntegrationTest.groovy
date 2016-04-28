@@ -6,7 +6,6 @@ import org.ka.test.config.EmbeddedDatabaseConfiguration
 import org.ka.trades.service.TradeProcessingService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
-import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
