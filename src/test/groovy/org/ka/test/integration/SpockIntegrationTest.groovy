@@ -26,9 +26,9 @@ class SpockIntegrationTest extends Specification {
         row.intersect(result) == result
         where:
         tradeInfo || result
-        'id=1|type=Bond|legalEntityId=1234' || [ TRADE_INFO: 'id=1|type=Bond|legalEntityId=1234', RESULT: 'SUCCESS', ERROR_MESSAGE: null]
-        'id=2|type=Converts|legalEntityId=2345|currency=EUR' || [ TRADE_INFO: 'id=2|type=Converts|legalEntityId=2345|currency=EUR', RESULT: 'SUCCESS', ERROR_MESSAGE: null]
-        'id=3|type=Options|legalEntityId=BigBank123|currency' || [ TRADE_INFO: 'id=3|type=Options|legalEntityId=BigBank123|currency', RESULT: 'FAILURE']
+        'id=1|type=Buy|legalEntityId=1234' || [ TRADE_INFO: 'id=1|type=Buy|legalEntityId=1234', RESULT: 'SUCCESS', ERROR_MESSAGE: null]
+        'id=2|type=Sell|legalEntityId=2345|currency=EUR' || [ TRADE_INFO: 'id=2|type=Sell|legalEntityId=2345|currency=EUR', RESULT: 'SUCCESS', ERROR_MESSAGE: null]
+        'id=3|type=Sell|legalEntityId=BigBank123|currency' || [ TRADE_INFO: 'id=3|type=Sell|legalEntityId=BigBank123|currency', RESULT: 'FAILURE']
     }
 
     def cleanup() {

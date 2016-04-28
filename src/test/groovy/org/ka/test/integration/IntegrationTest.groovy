@@ -29,7 +29,7 @@ class IntegrationTest {
     void processOneCorrectTradeInfo() {
         Assert.assertEquals(0, JdbcTestUtils.countRowsInTable(jdbcTemplate, "trades"));
 
-        String tradeInfo = "id=1|type=Bond|legalEntityId=1234";
+        String tradeInfo = "id=1|type=Sell|legalEntityId=1234";
         tradeService.process(tradeInfo);
 
         def row = jdbcTemplate.queryForObject('select * from TRADES_PROCESSING where trade_info = ?',
@@ -50,7 +50,7 @@ class IntegrationTest {
 
     @Test
     void processOneCorrectTradeInfoWithOptionalField() {
-        String tradeInfo = "id=2|type=Converts|legalEntityId=2345|currency=EUR";
+        String tradeInfo = "id=2|type=Buy|legalEntityId=2345|currency=EUR";
         tradeService.process(tradeInfo);
 
         def row = jdbcTemplate.queryForObject('select * from TRADES_PROCESSING where trade_info = ?',
@@ -71,7 +71,7 @@ class IntegrationTest {
 
     @Test
     void processInCorrectTradeInfo() {
-        String tradeInfo = "id=3|type=Option|legalEntityId=3456|currency";
+        String tradeInfo = "id=3|type=Sell|legalEntityId=3456|currency";
         tradeService.process(tradeInfo);
 
         def row = jdbcTemplate.queryForObject('select * from TRADES_PROCESSING where trade_info = ?',
