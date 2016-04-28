@@ -21,7 +21,7 @@ class SpockIntegrationTest extends Specification {
         when:
         tradeService.process(tradeInfo)
         then:
-        def row = sql.firstRow("select trade_info, result, error_message from TRADES_PROCESSING where trade_info = ?", tradeInfo) as Map
+        def row = sql.firstRow("select trade_info, result, error_message from TRADES_PROCESSING where trade_info = ?", tradeInfo)
         and:
         row.intersect(result) == result
         where:
