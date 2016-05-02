@@ -24,7 +24,7 @@ class TradeServiceRegressionTest extends Specification {
         then:
         noExceptionThrown()
         where:
-        message << sql.rows("select * from ").collect { it['TRADE_INFO'] }
+        message << sql.rows("select * from TRADES_PROCESSING").collect { it['TRADE_INFO'] }
     }
 
     def setupSpec() {
