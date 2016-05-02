@@ -37,7 +37,7 @@ class TradeServiceIntegrationTest extends Specification {
     }
 
     @Unroll
-    def 'process tradeInfo with error message: test for #tradeInfo'() {
+    def 'tradeInfo processing fails with error message: test for #tradeInfo'() {
         when:
         tradeService.process(tradeInfo)
         then:
