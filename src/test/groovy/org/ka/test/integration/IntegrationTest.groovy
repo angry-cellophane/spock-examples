@@ -1,5 +1,6 @@
 package org.ka.test.integration
 
+import org.codehaus.groovy.runtime.callsite.CallSite
 import org.junit.After
 import org.junit.AfterClass
 import org.junit.Assert
@@ -88,6 +89,12 @@ class IntegrationTest {
         Assert.assertEquals(tradeInfo, row['tradeInfo'])
         Assert.assertEquals('FAILURE', row['result'])
         Assert.assertNotNull(row['errorMessage'])
+    }
+
+    @Test
+    void test() {
+        CallSite[] var3 = $getCallSiteArray();
+        println var3
     }
 
     @After
