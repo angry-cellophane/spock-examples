@@ -3,13 +3,11 @@ package org.ka.test.integration
 import groovy.sql.Sql
 import org.ka.trades.dao.TradeDao
 import org.ka.trades.dao.TradeProcessingDao
-import org.ka.trades.model.Trade
 import org.ka.trades.parser.PipeSeparatedValuesParser
 import org.ka.trades.service.ParseAndSaveTradesToDatabase
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType
 import spock.lang.Specification
-import spock.lang.Unroll
 
 class TradeServiceRegressionTest extends Specification {
 
