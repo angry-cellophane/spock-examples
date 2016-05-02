@@ -25,6 +25,7 @@ public class PipeSeparatedValuesParser implements TradesParser {
     @Override
     public Trade parse(String tradeInfo) {
         Map<String, String> attributes = Arrays.stream(tradeInfo.split("\\|"))
+                .filter(s -> !s.isEmpty())
                 .map(attr -> attr.split("="))
                 .collect(Collectors.toMap(x -> x[0], x -> x[1]));
 
