@@ -29,11 +29,11 @@ class TradeServiceIntegrationTest extends Specification {
         and:
         expect == actual
         where:
-        tradeInfo                                          | result    | errorMessage
-        'id=1|type=Buy|legalEntityId=1234'                 | 'SUCCESS' | null
-        'id=2|type=Sell|legalEntityId=2345|currency=EUR'   | 'SUCCESS' | null
+        tradeInfo                                        | result    | errorMessage
+        'id=1|type=Buy|legalEntityId=1234'               | 'SUCCESS' | null
+        'id=2|type=Sell|legalEntityId=2345|currency=EUR' | 'SUCCESS' | null
 
-        expect = [ TRADE_INFO: tradeInfo, RESULT : result, ERROR_MESSAGE: errorMessage ]
+        expect = [TRADE_INFO: tradeInfo, RESULT: result, ERROR_MESSAGE: errorMessage]
     }
 
     @Unroll
@@ -49,7 +49,7 @@ class TradeServiceIntegrationTest extends Specification {
         'id=3|type=Sell|legalEntityId=BigBank123|currency' | 'FAILURE' | 'java.lang.ArrayIndexOutOfBoundsException: 1'
         'id=4|legalEntityId=SmallBank456'                  | 'FAILURE' | 'java.lang.RuntimeException: type is empty in id=4|legalEntityId=SmallBank456'
 
-        expect = [ TRADE_INFO: tradeInfo, RESULT : result, ERROR_MESSAGE: errorMessage ]
+        expect = [TRADE_INFO: tradeInfo, RESULT: result, ERROR_MESSAGE: errorMessage]
     }
 
     def cleanup() {
