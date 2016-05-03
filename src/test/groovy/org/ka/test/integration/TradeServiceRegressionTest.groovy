@@ -1,17 +1,23 @@
 package org.ka.test.integration
 
 import groovy.sql.Sql
+import org.ka.test.config.RegressionTestDatabaseConfiguration
 import org.ka.trades.dao.TradeDao
 import org.ka.trades.dao.TradeProcessingDao
 import org.ka.trades.parser.PipeSeparatedValuesParser
 import org.ka.trades.service.ParseAndSaveTradesToDatabase
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType
+import org.springframework.test.context.ContextConfiguration
+import org.springframework.test.context.support.AnnotationConfigContextLoader
+import spock.lang.Shared
 import spock.lang.Specification
 
 class TradeServiceRegressionTest extends Specification {
 
-    static Sql sql
+    @Shared Sql sql
 
     def 'do regression test for successful messages'() {
         given:
@@ -44,12 +50,7 @@ class TradeServiceRegressionTest extends Specification {
     }
 
     def setupSpec() {
-        sql = new Sql(
-                new EmbeddedDatabaseBuilder()
-                        .setType(EmbeddedDatabaseType.H2)
-                        .addScript("db/sql/reg-test-init.sql")
-                        .build()
-        )
+        sql = new AnnotationConfigApplicationContext(RegressionTestDatabaseConfiguration.class).getBean(Sql.class)
     }
 
     def cleanupSpec() {
