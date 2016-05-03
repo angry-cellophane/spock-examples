@@ -19,10 +19,10 @@ INSERT INTO TRADES(id, type, legal_entity_id) VALUES (1235, 'Sell', 'Very Big ba
 INSERT INTO TRADES(id, type, legal_entity_id) VALUES (1236, 'Buy', 'Very Big bank 1236');
 INSERT INTO TRADES(id, type, legal_entity_id) VALUES (1237, 'Sell', 'Very Big bank 1237');
 
-INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (NOW(), 'id=1233|type=Buy|legalEntityId=Very Big bank 1233', 'SUCCESS', null);
-INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (NOW(), 'id=1234|type=Buy|legalEntityId=Very Big bank 1234|', 'SUCCESS', null);
-INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (NOW(), 'type=Buy|legalEntityId=Very Big bank 123456|', 'FAILURE', 'java.lang.RuntimeException: id is empty in type=Buy|legalEntityId=Very Big bank 123456|');
-INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (NOW(), 'id=1235|type=Sell|legalEntityId=Very Big bank 1235', 'SUCCESS', null);
-INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (NOW(), 'id=1236|type=Buy|legalEntityId=Very Big bank 1236', 'SUCCESS', null);
-INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (NOW(), 'id=1237|type=Sell|legalEntityId=Very Big bank 1237|', 'SUCCESS', null);
-INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (NOW(), 'id=1238|legalEntityId=Very Big bank 1238|buyer', 'FAILURE', 'java.lang.ArrayIndexOutOfBoundsException: 1');
+INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (CURRENT_TIMESTAMP(), 'id=1233|type=Buy|legalEntityId=Very Big bank 1233', 'SUCCESS', null);
+INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (CURRENT_TIMESTAMP(), 'id=1234|type=Buy|legalEntityId=Very Big bank 1234|', 'SUCCESS', null);
+INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (CURRENT_TIMESTAMP(), 'type=Buy|legalEntityId=Very Big bank 123456|', 'FAILURE', 'java.lang.RuntimeException: id is empty in type=Buy|legalEntityId=Very Big bank 123456|');
+INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (CURRENT_TIMESTAMP(), 'id=1235|type=Sell|legalEntityId=Very Big bank 1235', 'SUCCESS', null);
+INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (CURRENT_TIMESTAMP(), 'id=1236|type=Buy|legalEntityId=Very Big bank 1236', 'SUCCESS', null);
+INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (CURRENT_TIMESTAMP(), 'id=1237|type=Sell|legalEntityId=Very Big bank 1237|', 'SUCCESS', null);
+INSERT INTO TRADES_PROCESSING(ts, trade_info, result, error_message) VALUES (CURRENT_TIMESTAMP(), 'id=1238|legalEntityId=Very Big bank 1238|buyer', 'FAILURE', 'java.lang.ArrayIndexOutOfBoundsException: 1');
