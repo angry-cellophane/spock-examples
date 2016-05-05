@@ -19,7 +19,7 @@ import java.sql.ResultSet
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = [EmbeddedDatabaseConfiguration.class, TradeProcessorConfiguration.class])
-class IntegrationTest {
+class JUnitIntegrationTest {
 
     @Autowired
     JdbcTemplate jdbcTemplate
