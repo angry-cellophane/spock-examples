@@ -49,7 +49,7 @@ class TestngIntegrationTest extends AbstractTestNGSpringContextTests {
         def row = jdbcTemplate.queryForObject('select * from TRADES_PROCESSING where trade_info = ?',
                 [tradeInfo] as Object[],
                 { ResultSet rs, int rowNum ->
-                    return [
+                    [
                             timestamp   : rs.getTimestamp('ts').toInstant().toEpochMilli(),
                             tradeInfo   : rs.getString('trade_info'),
                             result      : rs.getString('result'),
