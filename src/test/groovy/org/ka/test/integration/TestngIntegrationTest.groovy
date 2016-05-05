@@ -17,14 +17,13 @@ import org.testng.annotations.Test
 import java.lang.reflect.Method
 import java.sql.ResultSet
 
-@Test
+@Test(dataProvider = 'data')
 @ContextConfiguration(classes = [EmbeddedDatabaseConfiguration, TradeProcessorConfiguration])
 class TestngIntegrationTest extends AbstractTestNGSpringContextTests {
 
     @Autowired JdbcTemplate jdbcTemplate
     @Autowired TradeProcessingService tradeService
 
-    @Test(dataProvider = 'data')
     void 'process correct trade info'(String tradeInfo, String result) {
         tradeService.process(tradeInfo)
 
@@ -44,7 +43,6 @@ class TestngIntegrationTest extends AbstractTestNGSpringContextTests {
         Assert.assertNull(row['errorMessage'])
     }
 
-    @Test(dataProvider = 'data')
     void 'process incorrect trade info'(String tradeInfo, String result, String errorMessage) {
         tradeService.process(tradeInfo)
 
