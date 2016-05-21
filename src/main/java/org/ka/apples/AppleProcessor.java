@@ -14,7 +14,7 @@ public class AppleProcessor {
 
     public List<AppleCore> process(List<Apple> apples) {
         return apples.stream()
-                .map(appleFunction::apply)
+                .map(apple -> appleFunction.apply(apple))
                 .collect(Collectors.toList());
     }
 }
