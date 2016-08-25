@@ -12,22 +12,22 @@ class ListArgumentsTest extends Specification {
     }
 
     static interface Resolver {
-        Map<String, String> resolve(Collection<Item> items)
+        int resolve(Collection<Integer> items)
     }
 
     def test() {
         given:
         def resolver = Mock(Resolver) {
-            resolve([new Item(id: 1, value: "1"), new Item(id: 2, value: "2")]) >> ["1":"1", "2" : "2"]
+            resolve([1,2,3] as HashSet) >> 1
+            resolve(_) >> 2
         }
 
         when:
-        def map1 = resolver.resolve([new Item(id: 1, value: "1"), new Item(id: 2, value: "2")])
-        def map2 = resolver.resolve([new Item(id: 1, value: "1")])
+        def request = [1,2,3] as HashSet<Integer>
+        int result = resolver.resolve(request)
 
         then:
-        map1 != null
-        map2 == null
+        result == 1
     }
 
 }
