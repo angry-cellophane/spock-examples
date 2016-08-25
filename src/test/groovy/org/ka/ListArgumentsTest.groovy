@@ -23,7 +23,7 @@ class ListArgumentsTest extends Specification {
         }
 
         when:
-        def request = [1,2,3] as HashSet<Integer>
+        def request = [1,2,3] as HashSet
         int result = resolver.resolve(request)
 
         then:
